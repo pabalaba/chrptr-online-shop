@@ -1,0 +1,27 @@
+{
+  "name": "chrptr-online-shop",
+  "version": "1.0.0",
+  "description": "Local shop",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "docker",
+    "express"
+  ],
+  "type": "module",
+  "author": "pabalaba",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.0",
+    "nodemon": "^2.0.19",
+    "uuid": "^9.0.0"
+  }
+}
