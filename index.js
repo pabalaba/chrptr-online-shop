@@ -8,6 +8,7 @@ import logMiddleware from './middlewares/log.middleware.js';
 //Routes
 import clientRouter from './routers/client.routes.js';
 import internalRouter from './routers/internal.routes.js';
+import itemRouter from './routers/items.routes.js';
 
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(logMiddleware);
 
 app.use(clientRouter);
 app.use(internalRouter);
+app.use(itemRouter);
 
 app.use(notFoundMiddleware);
 
