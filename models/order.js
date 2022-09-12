@@ -11,8 +11,12 @@ const OrderSchema = new mongoose.Schema(
             item: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Item',
+                required: true,
             },
-            quantity: Number,
+            quantity:{
+                type: Number,
+                required: true,
+            },
         }],
         uniqueCode: {
             type: String,
@@ -24,7 +28,9 @@ const OrderSchema = new mongoose.Schema(
         },
         discount: {
             type: Number,
-            required: true,
+        },
+        discountedPrice: {
+            type: Number,
         },
         orderDate: {
             type: Date,
@@ -32,7 +38,6 @@ const OrderSchema = new mongoose.Schema(
         },
         shippingDate: {
             type: Date,
-            required: true,
         }
     },
     { versionKey: '_v1'}
@@ -40,4 +45,4 @@ const OrderSchema = new mongoose.Schema(
 
 const Order = mongoose.model('Order',OrderSchema);
 
-export default Item;
+export default Order;

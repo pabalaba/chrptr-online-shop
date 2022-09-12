@@ -1,7 +1,7 @@
 import Item from "../models/item.js";
 
 const getItems = async () => {
-    return await Item.find().select("-_v1 -_id");;
+    return await Item.find().select("-_v1 -_id");
 }
 
 const getItemByUniqueCode = async (uuid) => {

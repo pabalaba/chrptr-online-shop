@@ -2,9 +2,38 @@ import express from "express";
 import { query, validationResult } from "express-validator";
 import core from "../services/client.services.js";
 
+/**
+ * @swagger
+ *  tags:
+ *      name: Clients
+ *      description: List of clients
+ */
 const clientRouter = express.Router();
 
-
+/**
+ * @swagger
+ *  /api/clients:
+ *      get:
+ *          summary: Returns all clients
+ *          tags: [Clients]
+ *          responses:
+ *              200:
+ *                  description: The list of clients
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: object
+ *                              properites:
+ *                                  number:
+ *                                      type: integers
+ *                                  users:
+ *                                      type: object
+ *                                      properties:
+ *                                          data:
+ *                                              type: array
+ *                                              items:
+ *                                                  $ref: '#/models/Client'
+ */
 clientRouter.get("/api/clients", async (req,res,next) => {
 
     if(Object.keys(req.query)!=0){
