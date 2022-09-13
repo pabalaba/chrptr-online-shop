@@ -8,7 +8,7 @@ import atlasConnection from './database/database.js';
 import notFoundMiddleware from './middlewares/notFound.middleware.js';
 import logMiddleware from './middlewares/log.middleware.js';
 //Routes
-import clientRouter from './routes/client.routes.js';
+import customerRouter from './routes/customer.routes.js';
 import internalRouter from './routes/internal.routes.js';
 import itemRouter from './routes/item.routes.js';
 import orderRouter from './routes/order.routes.js';
@@ -35,7 +35,7 @@ const swaggerOptions = {
             description: "OSAPI doc",
         },
     ],
-    apis: ['apps.js','./routes/client.routes.js','./routes/item.routes.js'],
+    apis: ['apps.js','./routes/customer.routes.js','./routes/item.routes.js'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
@@ -45,7 +45,7 @@ app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
 app.use(express.json());
 app.use(logMiddleware);
 
-app.use(clientRouter);
+app.use(customerRouter);
 app.use(internalRouter);
 app.use(itemRouter);
 app.use(orderRouter);

@@ -1,7 +1,7 @@
-import Client from "../models/client.js";
+import Customer from "../models/customer.js";
 
 const getUsers = async () =>{
-    return await Client.find();
+    return await Customer.find();
 }
 
 const getUsersByDate = async (date) => {

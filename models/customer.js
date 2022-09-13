@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ClientSchema = new mongoose.Schema(
+const CustomerSchema = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -31,6 +31,6 @@ const ClientSchema = new mongoose.Schema(
     { versionKey: '_v1'}
 );
 
-const Client = mongoose.model('Client',ClientSchema);
+const Customer = mongoose.model('Customer',CustomerSchema);
 
-export default Client;
+export default Customer;

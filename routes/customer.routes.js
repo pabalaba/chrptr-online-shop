@@ -1,24 +1,24 @@
 import express from "express";
 import { query, validationResult } from "express-validator";
-import core from "../services/client.services.js";
+import core from "../services/customer.services.js";
 
 /**
  * @swagger
  *  tags:
- *      name: Clients
- *      description: List of clients
+ *      name: Customers
+ *      description: List of customers
  */
-const clientRouter = express.Router();
+const customerRouter = express.Router();
 
 /**
  * @swagger
- *  /api/clients:
+ *  /api/customers:
  *      get:
- *          summary: Returns all clients
- *          tags: [Clients]
+ *          summary: Returns all customers
+ *          tags: [Customers]
  *          responses:
  *              200:
- *                  description: The list of clients
+ *                  description: The list of customers
  *                  content:
  *                      application/json:
  *                          schema:
@@ -32,9 +32,9 @@ const clientRouter = express.Router();
  *                                          data:
  *                                              type: array
  *                                              items:
- *                                                  $ref: '#/models/Client'
+ *                                                  $ref: '#/models/Customer'
  */
-clientRouter.get("/api/clients", async (req,res,next) => {
+customerRouter.get("/api/customers", async (req,res,next) => {
 
     if(Object.keys(req.query)!=0){
         return next();
@@ -49,7 +49,7 @@ clientRouter.get("/api/clients", async (req,res,next) => {
     })
 })
 
-clientRouter.get("/api/clients",
+customerRouter.get("/api/customers",
 async (req,res,next) => {
     
     if(Object.keys(req.query).length != 1 || 
@@ -76,7 +76,7 @@ async (req,res,next) => {
     });
 })
 
-clientRouter.get("/api/clients",
+customerRouter.get("/api/customers",
 async (req,res,next) => {
     if(Object.keys(req.query).length != 1 || 
        !Object.keys(req.query).includes("domain")){
@@ -98,4 +98,4 @@ async (req,res,next) => {
     });
 })
 
-export default clientRouter;
+export default customerRouter;

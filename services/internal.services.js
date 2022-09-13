@@ -1,21 +1,20 @@
 import { faker } from "@faker-js/faker";
-import Client from "../models/client.js";
+import Customer from "../models/customer.js";
 import Item from "../models/item.js";
 import Order from '../models/order.js';
 import { v4 as uuidv4 } from 'uuid';
 
 
-const initClients = async () => {
+const initCustomers = async () => {
     for(let i = 0;i<10;i++){
-        const client = new Client({
+        const customer = new Customer({
             name: faker.name.firstName(),
             surname: faker.name.lastName(),
             email: faker.internet.email(),
             address: (faker.address.country()+", "+faker.address.state()+", "+faker.address.city()+", "+faker.address.streetAddress()),
             creationDate: Date.now()
         });
-        console.log(client);
-        await client.save()
+        await customer.save()
     }
 }
 
@@ -32,12 +31,12 @@ const initItems = async () => {
 }
 
 const initOrders = async () => {
-    const clientData = await Client.find();
+    const customerData = await Customer.find();
     const itemData = await Item.find();
 
     for(let j = 0; j < 500;j++){
         const order = new Order();
-        order.client = clientData[Math.floor(Math.random()*clientData.length)]._id;
+        order.customer = customerData[Math.floor(Math.random()*customerData.length)]._id;
         let total = 0;
         let d = Math.floor(Math.random()*25);
         for(let i = 0;i < 4;i++){
@@ -60,7 +59,7 @@ const initOrders = async () => {
 }
 
 export default{
-    initClients,
+    initCustomers,
     initItems,
     initOrders
 }

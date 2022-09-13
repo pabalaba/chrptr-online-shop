@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema(
     {
-        client: {
+        customer: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Client',
+            ref: 'Customer',
             required: true,
         },
         items: [{
