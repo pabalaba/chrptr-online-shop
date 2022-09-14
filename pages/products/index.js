@@ -1,4 +1,5 @@
-import axios from 'axios'
+import Link from 'next/link';
+
 export default function Items({ data }){
     return (
         <div>
@@ -7,7 +8,9 @@ export default function Items({ data }){
                 {data.map(i => {
                     return (
                         <li key={i.uniqueCode}>
-                            {i.name} {i.price}$
+                            <Link href={`products/${i.uniqueCode}`}>
+                                <a>{i.name} {i.price}$</a>
+                            </Link>
                         </li>
                     )
                 })}
