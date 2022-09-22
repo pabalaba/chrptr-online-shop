@@ -64,7 +64,6 @@ async (req,res,next) => {
     });
 });
 
-
 orderRouter.post('/api/orders',
 body('email').isEmail(),
 body('items').isArray(),
@@ -85,5 +84,21 @@ async (req,res) => {
     
     return res.status(201).json()
 })
+
+orderRouter.delete('/api/oders/:id',
+param('id').isMongoId(),
+async (req,res) => {
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+        return res.status(400).json(errors);
+    }
+
+    await orderServices.deleteOrder(req.params.id);
+
+    return res.status(204).json();
+
+})
+
 
 export default orderRouter;
