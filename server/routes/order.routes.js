@@ -64,27 +64,6 @@ async (req,res,next) => {
     });
 });
 
-orderRouter.get('/api/orders/customer/:id', 
-query('total').exists(),
-async (req,res,next) => {
-    if(!Object.keys(req.query).includes('total')){
-        return next();
-    }
-
-    const errors = validationResult(req);
-
-    if(!errors.isEmpty()){
-        return res.status(400).json(errors);
-    }
-
-    const data = await orderServices.getCustomerExpenses(req.params.id);
-    const num = parseFloat(await data.toFixed(2));
-
-    return res.status(200).json({
-        "total": num
-    });
-});
-
 
 orderRouter.post('/api/orders',
 body('email').isEmail(),

@@ -59,10 +59,17 @@ const createOrder = async (orderReq) => {
 
 }
 
+const deleteOrder = (id) => {
+    try{
+        Item.remove({_id:id});
+    }catch(err){}
+}
+
 export default{
     getOrders,
     getOrderById,
     getOrderByCustomerId,
     getCustomerExpenses,
-    createOrder
+    createOrder,
+    deleteOrder
 }
